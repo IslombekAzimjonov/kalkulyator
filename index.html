@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kalkulyator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="continer">
+        <input type="text" class="ekran" readonly>
+        <table>
+            <tr>
+                <td class="tozalash">C</td>
+                <td><-</td>
+                <td>/</td>
+                <td>*</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td rowspan="2">+</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>0</td>
+                <td>00</td>
+                <td>.</td>
+                <td>=</td>
+            </tr>
+        </table>
+    </div>
+    <script type="text/javascript">
+        let ekran = document.querySelector('.ekran')
+        document.querySelectorAll('td').forEach(function(calc){
+            calc.addEventListener('click',function(e){
+                let tanla = e.target.innerText
+                if(tanla == 'C'){
+                    ekran.value = "";
+                }
+                else if(tanla == '='){
+                    ekran.value = eval(ekran.value)
+                }
+                else if (tanla == '<-') {
+                    ekran.value = ekran.value.substring(0,ekran.value.length-1)
+                }
+                else{
+                    ekran.value += tanla
+                }
+            });
+        });
+    </script>
+</body>
+</html>
